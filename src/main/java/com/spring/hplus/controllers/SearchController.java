@@ -19,14 +19,12 @@ public class SearchController {
 
     @GetMapping("/search")
     public String search(@RequestParam("search") String search, Model model){
+        System.out.println("in search controller");
+        System.out.println("search criteria: "+search);
 
-        System.out.println("Search controller...");
-        System.out.println("Search term: "+ search);
-
-        List<Product> products= new ArrayList<>();
-        products = productRepository.serachByName(search);
-        model.addAttribute("products",products);
-
+        List<Product> products = new ArrayList<>();
+        products = productRepository.searchByName(search);
+        model.addAttribute("products", products);
         return "search";
     }
 }
